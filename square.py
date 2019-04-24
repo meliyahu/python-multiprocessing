@@ -23,7 +23,7 @@ def square(num):
 if __name__ == '__main__':
     print(f"This computer has {cpu_count()} cores.")
     processes = []
-    # numbers = [1, 2, 3, 5, 6, 7, 8, 9, 10]
+    # numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     numbers = [1, 2, 3, 4]
     for number in numbers:
         process = Process(name='Square_Of ' + str(number), target=square, args=(number,))

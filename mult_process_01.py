@@ -1,18 +1,18 @@
 import multiprocessing
 
 
-def worker():
+def worker(num):
     """
     worker function
     :return:
     """
-    print('Worker working...')
+    print(f'Worker {num} is working...')
     return
 
 
 if __name__ == '__main__':
     jobs = []
     for i in range(5):
-        p = multiprocessing.Process(target=worker)
+        p = multiprocessing.Process(target=worker, args=(i,))
         jobs.append(p)
         p.start()

@@ -7,7 +7,7 @@ def process_customer(customer):
     cust = Customer(customer)
     cust.execute()
 
-if __name__ == "__main__":
+def run():
     t1 = time.perf_counter()
 
     with concurrent.futures.ThreadPoolExecutor() as executor:
@@ -16,3 +16,6 @@ if __name__ == "__main__":
     t2 = time.perf_counter()
 
     print(f'It took {t2 - t1} seconds!')
+    
+if __name__ == "__main__":
+    run()

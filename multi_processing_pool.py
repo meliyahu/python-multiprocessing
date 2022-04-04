@@ -18,13 +18,15 @@ def sum_square_with_mp(numbers):
     :return:
     """
     start_time = time.time()
-    p = Pool(os.cpu_count())  # Distribute according to number of cores
+    # p = Pool(os.cpu_count())  # Distribute according to number of cores
+    p = Pool()  # Distribute according to number of cores
     result = p.map(sum_square, numbers)
     p.close()
     p.join()
     end_time = time.time() - start_time
     d = get_formatted_time(end_time)
-    print(f"Processing {len(numbers)} numbers took {d.day - 1} days:{d.hour} hours {d.minute} minute {d.second} seconds WITH multiprocessing")
+    # print(f"Processing {len(numbers)} numbers took {d.day - 1} days:{d.hour} hours {d.minute} minute {d.second} seconds WITH multiprocessing")
+    print(f"Processing {len(numbers)} numbers took {d.day - 1} days {d.hour} hours {d.minute} minute {d.second} seconds {d.microsecond} microseconds")
 
 
 def sum_square_without_mp(numbers):
@@ -41,7 +43,9 @@ def sum_square_without_mp(numbers):
     end_time = time.time() - start_time
     d = get_formatted_time(end_time)
 
-    print(f"Processing {len(numbers)} numbers took {d.day-1} days:{d.hour} hours {d.minute} minute {d.second} seconds WITHOUT multiprocessing")
+    # print(f"Processing {len(numbers)} numbers took {d.day-1} days:{d.hour} hours {d.minute} minute {d.second} seconds WITHOUT multiprocessing")
+
+    print(f"Processing {len(numbers)} numbers took {d.day-1} days {d.hour} hours {d.minute} minute {d.second} seconds {d.microsecond} microseconds")
 
 
 def get_formatted_time(seconds):
@@ -51,6 +55,6 @@ def get_formatted_time(seconds):
 
 
 if __name__ == "__main__":
-    numbers = range(100000)
+    numbers = range(10000)
     sum_square_with_mp(numbers)
     sum_square_without_mp(numbers)
